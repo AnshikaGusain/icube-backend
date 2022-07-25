@@ -9,12 +9,9 @@ app.use(cors());
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db = knex({
-  client: 'pg',
-  connection: {
-    host : 'localhost',
-    user : 'postgres',
-    password : 'An$hika13#',
-    database : 'endource'
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
   }
 });
 

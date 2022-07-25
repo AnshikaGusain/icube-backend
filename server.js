@@ -16,9 +16,12 @@ app.use(cors());
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db = knex({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
+  client:'pg',
+  connection:{
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
   }
 });
 

@@ -4,15 +4,15 @@ import data from "./data.js";
 import cors from "cors";
 import link from "./link.js";
 
-const corsOptions={
-  origin:'*',
-  credentials:true,
-  optionSuccessStatus:200,
-}
+// const corsOptions={
+//   origin:'*',
+//   credentials:true,
+//   optionSuccessStatus:200,
+// }
 
 const app=express();
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db = knex({

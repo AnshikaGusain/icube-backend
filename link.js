@@ -1,15 +1,15 @@
 const link=(req,res,db)=>{
-    const {title}=req.body;
-    db.from('buy').select('link').where({title})
+    const {title,category}=req.body;
+    db.from(category).select('*').where({title})
     .then(item=>{
         if(item.length){
-            res.json(item[0].link)
+            res.json(item[0])
         }
         else{
             res.status(400).json("Not Found");
         }
     })
-    .catch(err=>res.json("err"));
+    .catch(err=>res.status(400).json("err"));
     
 }
 

@@ -3,7 +3,7 @@ import knex from "knex";
 import data from "./data.js";
 import cors from "cors";
 import link from "./link.js";
-
+import Handpickeddata from "./Handpicked.js";
 const corsOptions={
   origin:'*',
   credentials:true,
@@ -38,6 +38,10 @@ app.get('/data/:Title',(req,res)=>{
 
 app.post('/link',(req,res)=>{
   link(req,res,db);
+})
+
+app.post('/handpicked',(req,res)=>{
+  Handpickeddata(req,res,db);
 })
 
 app.listen(process.env.PORT || 3000,()=>{

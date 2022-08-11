@@ -4,6 +4,7 @@ import data from "./data.js";
 import cors from "cors";
 import link from "./link.js";
 import Handpickeddata from "./Handpicked.js";
+import Category from "./category.js";
 const corsOptions={
   origin:'*',
   credentials:true,
@@ -43,6 +44,10 @@ app.post('/link',(req,res)=>{
 app.post('/handpicked',(req,res)=>{
   Handpickeddata(req,res,db);
 })
+app.post('/category',(req,res)=>{
+  Category(req,res,db);
+})
+
 
 app.listen(process.env.PORT || 3000,()=>{
     console.log("Running");

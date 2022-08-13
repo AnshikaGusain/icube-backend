@@ -1,6 +1,6 @@
 const link=(req,res,db)=>{
-    const {title,category}=req.body;
-    db.from(category).select('*').where({title})
+    const {s_no,category}=req.body;
+    db.from(category).select('*').where({s_no})
     .then(item=>{
         if(item.length){
             res.json(item[0])

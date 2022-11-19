@@ -6,9 +6,7 @@ import link from "./link.js";
 import Handpickeddata from "./Handpicked.js";
 import Category from "./category.js";
 const corsOptions={
-  origin:'*',
-  credentials:true,
-  optionSuccessStatus:200,
+  origin:'*'
 }
 
 const app=express();

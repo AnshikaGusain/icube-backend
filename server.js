@@ -13,7 +13,7 @@ const corsOptions={
 
 const app=express();
 app.use(express.json());
-app.use(cors({origin:"null"}));
+app.use(cors({origin:"*"}));
 
 // app.use(function (req, res, next) {
 //   res.setHeader('Access-Control-Allow-Origin', '*');

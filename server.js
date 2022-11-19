@@ -15,6 +15,14 @@ const app=express();
 app.use(express.json());
 app.use(cors(corsOptions));
 
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+  });
+
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db = knex({
   client: 'pg',

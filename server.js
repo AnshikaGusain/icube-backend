@@ -6,6 +6,8 @@ import link from "./link.js";
 import Handpickeddata from "./Handpicked.js";
 import Category from "./category.js";
 
+
+var whitelist = ['https://icube.design', 'http://localhost:3001']
 var corsOptions={
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
@@ -16,6 +18,7 @@ var corsOptions={
   }, 
    credentials:true,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
+   allowedHeaders:['Content-Type', 'Authorization']
    
 }
 
@@ -46,6 +49,8 @@ const db = knex({
 
 
 app.set("db",db);
+
+app.options('*', cors());
 
 app.get('/',cors(corsOptions),(req,res)=>{
     res.json("Working");

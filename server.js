@@ -5,15 +5,23 @@ import cors from "cors";
 import link from "./link.js";
 import Handpickeddata from "./Handpicked.js";
 import Category from "./category.js";
-const corsOptions={
-  origin:'*', 
+
+var corsOptions={
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }, 
    credentials:true,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
+   
 }
 
 const app=express();
 app.use(express.json());
-app.use(cors({origin:"*"}));
+
 
 // app.use(function (req, res, next) {
 //   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -39,22 +47,22 @@ const db = knex({
 
 app.set("db",db);
 
-app.get('/',(req,res)=>{
+app.get('/',cors(corsOptions),(req,res)=>{
     res.json("Working");
 })
 
-app.get('/data/:Title',(req,res)=>{
+app.get('/data/:Title',cors(corsOptions),(req,res)=>{
     data(req,res,db);
 })
 
-app.post('/link',(req,res)=>{
+app.post('/link',cors(corsOptions),(req,res)=>{
   link(req,res,db);
 })
 
-app.post('/handpicked',(req,res)=>{
+app.post('/handpicked',cors(corsOptions),(req,res)=>{
   Handpickeddata(req,res,db);
 })
-app.post('/category',(req,res)=>{
+app.post('/category',cors(corsOptions),(req,res)=>{
   Category(req,res,db);
 })
 

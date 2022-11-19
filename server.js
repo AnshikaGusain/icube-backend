@@ -17,12 +17,14 @@ app.use(cors(corsOptions));
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db = knex({
-  client:'pg',
-  connection:{
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
+  client: 'pg',
+  version: '7.2',
+  connection: {
+    host : 'icube-database.cgbrqchzcvsu.ap-northeast-1.rds.amazonaws.com',
+    port : 5432,
+    user : 'icube',
+    password : 'Software124$',
+    database : 'icube'
   }
 });
 

@@ -50,24 +50,24 @@ const db = knex({
 
 app.set("db",db);
 
-app.options('*', cors());
+// app.options('*', cors());
 
-app.get('/',cors(corsOptions),(req,res)=>{
+app.get('/',(req,res)=>{
     res.json("Working");
 })
 
-app.get('/data/:Title',cors(corsOptions),(req,res)=>{
+app.get('/data/:Title',(req,res)=>{
     data(req,res,db);
 })
 
-app.post('/link',cors(corsOptions),(req,res)=>{
+app.post('/link',(req,res)=>{
   link(req,res,db);
 })
 
-app.post('/handpicked',cors(corsOptions),(req,res)=>{
+app.post('/handpicked',(req,res)=>{
   Handpickeddata(req,res,db);
 })
-app.post('/category',cors(corsOptions),(req,res)=>{
+app.post('/category',(req,res)=>{
   Category(req,res,db);
 })
 

@@ -7,20 +7,7 @@ import Handpickeddata from "./Handpicked.js";
 import Category from "./category.js";
 
 
-// var whitelist = ['https://icube.design', 'http://localhost:3001']
-// var corsOptions={
-//   origin: function (origin, callback) {
-//     if (whitelist.indexOf(origin) !== -1 || !origin) {
-//       callback(null, true)
-//     } else {
-//       callback(new Error('Not allowed by CORS'))
-//     }
-//   }, 
-//    credentials:true,            //access-control-allow-credentials:true
-//    optionSuccessStatus:200,
-//    allowedHeaders:['Content-Type', 'Authorization']
-   
-// }
+
 
 
 const app=express();

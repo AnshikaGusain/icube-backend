@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import express from "express";
 import knex from "knex";
 import data from "./data.js";
@@ -9,6 +10,7 @@ import Category from "./category.js";
 
 
 
+dotenv.config();
 
 const app=express();
 app.use(express.json());
@@ -27,11 +29,11 @@ const db = knex({
   client: 'pg',
   version: '7.2',
   connection: {
-    host : 'icube-database.cgbrqchzcvsu.ap-northeast-1.rds.amazonaws.com',
+    host : process.env.HOST,
     port : 5432,
-    user : 'icube',
-    password : 'Software124$',
-    database : 'icube'
+    user : process.env.USER,
+    password : process.env.PASSWORD,
+    database : process.env.DATABASE
   }
 });
 
@@ -41,6 +43,7 @@ app.set("db",db);
 // app.options('*', cors());
 
 app.get('/',(req,res)=>{
+    console.log(process.env.HOST);
     res.json("Working");
 })
 
